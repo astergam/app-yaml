@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-multi-containers
+spec:
+  volumes:
+  - name: firstvolume
+    emptyDir: {}
+  containers:
+  - name: first
+    image: gcr.io/uptimerobotmonitors/demo:v1.0.0
+    volumeMounts:
+    - name: version1
+      mountPath: /usr/share/v1
+  - name: second
+    image: gcr.io/uptimerobotmonitors/demo:v2.0.0
+    volumeMounts:
+    - name: version2
+      mountPath: /usr/share/v2

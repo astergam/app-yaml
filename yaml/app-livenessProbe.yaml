@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: astergam-app
+spec:
+  template:
+    spec:
+      containers:
+      - name: astergam-app-container
+        image: gcr.io/uptimerobotmonitors/demo:v1.0.0
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          failureThreshold: 2
+        ports:
+          - containerPort: 8080
+            name: http

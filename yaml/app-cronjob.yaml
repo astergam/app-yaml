@@ -1,0 +1,14 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: astergam-cronjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: astergam-cronjob-container
+            image:  gcr.io/uptimerobotmonitors/demo:v1.0.0
+          restartPolicy: OnFailure

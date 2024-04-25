@@ -1,0 +1,11 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: astergam-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: astergam-job-container
+        image: gcr.io/uptimerobotmonitors/demo:v1.0.0
+      restartPolicy: Never
